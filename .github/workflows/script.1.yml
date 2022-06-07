@@ -1,0 +1,26 @@
+name: script 1
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: set config path
+        run: |
+          echo "PR_BOT_CONFIG_PATH='./bot_config'" >> "$GITHUB_ENV"
+      - 
+        name: Set env from secrets
+        run: |
+          echo "MOODLE_ACCESS_TOKEN=${{ secrets.MOODLE_ACCESS_TOKEN }}" >> "$GITHUB_ENV"
+      - 
+        name: Check out code
+        uses: actions/checkout@v2
+      - 
+        name: Run script
+        uses: Dmitriy129/moodle-github-sync-1@0.1.3
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."

@@ -1,0 +1,53 @@
+name: script 2
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      COURSE_ID:
+        required: true 
+        type: string
+      CM_ID:
+        required: true 
+        type: string
+      GITHUB_PR_REGEX:
+        required: true 
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: set config path
+        run: |
+          echo "PR_BOT_CONFIG_PATH=bot_config" >> "$GITHUB_ENV"
+      - 
+        name: workflow_dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "COURSE_ID=${{github.event.inputs.COURSE_ID}}" >> "$GITHUB_ENV"
+          echo "CM_ID=${{github.event.inputs.CM_ID}}" >> "$GITHUB_ENV"
+          echo "GITHUB_PR_REGEX=${{github.event.inputs.GITHUB_PR_REGEX}}" >> "$GITHUB_ENV"
+      - 
+        name: cron 1
+        if: github.event.schedule == '*/15 * * * *'
+        run: |
+          echo "COURSE_ID=47" >> "$GITHUB_ENV"
+          echo "CM_ID=1553" >> "$GITHUB_ENV"
+          echo "GITHUB_PR_REGEX='^(\\w*)_(lr1)$'" >> "$GITHUB_ENV"
+      - 
+        name: Set env from secrets
+        run: |
+          echo "MOODLE_ACCESS_TOKEN=${{ secrets.MOODLE_ACCESS_TOKEN }}" >> "$GITHUB_ENV"
+      - 
+        name: Check out code
+        uses: actions/checkout@v2
+      - 
+        name: "000"
+        run: ls "${{ github.workspace }}" .
+        shell: bash
+      - 
+        name: Run script
+        uses: Dmitriy129/moodle-github-sync-2@0.1.4
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."

@@ -1,0 +1,72 @@
+{
+    "github": {
+        "gradeLabel": {
+            "defaultTemplate": "#Moodle",
+            "defaultColor": "c4c",
+            "config": [
+                [
+                    [0, 30],
+                    {
+                        "color": "ff3d00",
+                        "template": "Не сдали ({raw}/{max})",
+                        "description": "можно написать, но видно вроде только в настройках"
+                    }
+                ],
+                [
+                    [30, 60],
+                    {
+                        "color": "ffd740",
+                        "template": "Зачет ({raw}/{max})",
+                        "description": "можно написать, но видно вроде только в настройках"
+                    }
+                ],
+                [
+                    [60, 80],
+                    {
+                        "color": "64dd17",
+                        "template": "Зачет",
+                        "description": "можно написать, но видно вроде только в настройках"
+                    }
+                ]
+            ]
+        },
+        "accessLabel": {
+            "defaultTemplate": "#Moodle",
+            "defaultColor": "c4c",
+            "config": [
+                [
+                    [-1, 0],
+                    {
+                        "color": "ff3d00",
+                        "template": "-",
+                        "description": "можно написать, но видно вроде только в настройках",
+                        "comment": "Не решена задача лабораторной работы в дистанционном курсе, нет допуска к защите лабораторной",
+                        "needToClose": true
+                    }
+                ],
+                [
+                    [0, 100],
+                    {
+                        "color": "238636",
+                        "template": "+",
+                        "description": "можно написать, но видно вроде только в настройках",
+                        "comment": "Задача на мудл решена.\n"
+                    }
+                ]
+            ]
+        }
+    },
+    "moodle": {
+        "baseUrl": "http://e.moevm.info"
+    },
+    "googleSheet": {
+        "id": "1-KENToVk8vYABspbj-7gUsojEO9lFMzffeNVVACqPEQ",
+        "headers": {
+            "fio": "ФИО",
+            "email": "Email",
+            "github": "github",
+            "username": "username",
+            "group": "Группа"
+        }
+    }
+}
