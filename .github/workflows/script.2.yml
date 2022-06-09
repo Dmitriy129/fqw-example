@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "COURSE_ID=47" >> "$GITHUB_ENV"
           echo "CM_ID=1553" >> "$GITHUB_ENV"
-          echo "GITHUB_PR_REGEX='^(\\w*)_(lr1)$'" >> "$GITHUB_ENV"
+          echo "GITHUB_PR_REGEX=^(\\w*)_(lr1)$" >> "$GITHUB_ENV"
       - 
         name: Set env from secrets
         run: |
